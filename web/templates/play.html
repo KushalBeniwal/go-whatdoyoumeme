@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../static/stylesheets/gameScreen1.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- <script src="../models/createRoomCopyCode.js"></script> -->
+    <script>
+        function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        copyMessage();
+        $temp.remove();
+    }
+    function copyMessage(){
+        document.getElementById("#btn").innerHTML = "Copied!";
+    }
+    
+    </script>
+    
+    <title>What do you meme?</title>
+</head>
+<body>
+
+<!-- <% let rounds = users[0].rounds %>
+
+<% let s = scene[0].scene %> -->
+
+<div id="memes" class="game-screen">
+    <div class="header"> <!--flex-->
+        <div class="game-logo">
+            What do you MEME?
+        </div>
+        <div class="quit-button">
+            <button><a href="/" style="text-decoration: none; color: white;">Quit Game</a></button>
+        </div>
+    </div>
+    <div class="code-area">
+    <div class="room-share">
+        <div class="room-code-prompt">Copy this code and share with your friends to invite them to this room: </div> 
+    <div class="room-code">
+        <p> {{.Id}}</p>
+    </div>
+    <div class="copy-code">
+        <button id="btn" onclick="copyToClipboard('#room_code')" >Copy Room Code</button>
+    </div>
+    </div>
+</div>
+        <form class="response-area" action="/room/{{.Id}}/topmemes" method="POST">
+            <div class="scenario">
+                <div class="scenario-header">
+                    SCENARIO
+                </div>
+                {{$scene := .S}}
+                <textarea class="scenario-text-input" type="text" name="scene" disabled="disabled" rows="3" readonly=readonly>{{$scene.Senario}}</textarea>
+            </div>
+
+            <div class="memes">
+                <div class="memes-header">
+                    MEMES
+                </div>
+                <div class="memes-memes">
+                    {{range $scene.Memes}}
+                        <div class="meme-checkbox-set">
+                            <label for="memeImg"> <img class="meme-img" id="memeImg" src="data:image/jpeg;base64,{{index . "imgEb64" }}" alt="meme"> </label><br>
+                            <input class="checkbox" type="checkbox" id="memeImg" name="memeImg" value="{{index . "imgEb64" }}">
+                        </div>
+                    {{end}} 
+                </div>
+            </div>
+
+            <input class="submit-button" type="submit" value="Submit">
+        </form>
+</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="../../public/js/main.js"></script>
+</body>
+</html>
