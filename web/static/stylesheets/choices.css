@@ -73,7 +73,7 @@
   max-width: 400px;
   min-width: 400px;
   border-radius: 20px;
-  background-image: url("../assets/createImg.png");
+  background-image: url("/images/createImg.png");
   background-size: cover;
   text-align: center;
 }
@@ -114,7 +114,7 @@
   max-width: 400px;
   min-width: 400px;
   border-radius: 20px;
-  background-image: url("../assets/joinImg.png");
+  background-image: url("/images/joinImg.png");
   background-size: cover;
 }
 

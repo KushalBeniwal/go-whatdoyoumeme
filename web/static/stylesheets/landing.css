@@ -3,7 +3,7 @@
 .landing-page{
     padding: 20px;
     background-color: #fffcee;
-    background-image: url("../assets/landingImg.png");
+    background-image: url("/images/landingImg.png");
     background-size: cover ;
     background-position: center;
     background-repeat: no-repeat;
